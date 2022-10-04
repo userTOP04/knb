@@ -1,6 +1,7 @@
 import os
 import random
 
+
 name = input("Как вас зовут? ")
 if not name:
     name = "Илья"
@@ -32,7 +33,7 @@ while game:
     if way_1 and key == "1":
         os.system("cls")
         print("Поеду-ка я по той дорожке, где убитому быть. Умру в чистом поле, как славный богатырь")
-        print("1 - Убить разбойников")
+        print("1 - Сразиться с разбойники")
         print("2 - Вступить в банду к разбойникам")
 
         user_choice = input("Введите номер ответа и нажмите ENTER ")
@@ -41,16 +42,36 @@ while game:
 
     if way_1 and key == "11":
         os.system("cls")
-        print("Текст дорога 1 - Он вернулся к белому камню, стер старую надпись, новую написал Ездил в правую дорожку  убит не был")
-        way_1 = False
-        key = ""
-        print("Нажмите ENTER для продолжения")
+        print("Текст дорога 1 - Сразитесь с разбойниками")
+        user_hp = 50
+        rb_hp = 50
+    while user_hp and rb_hp:
+        user_ud = random.randint(1, 5)
+        rb_ud = random.randint(1, 5)
+        print("Нажмите ENTER для удара")
+        rb_hp -= user_ud
+        print(f"{name} ударил разбойника")
+        print(rb_hp)
+        user_hp -= rb_ud
+        print(f"разбойник убарил {name}")
+        print(user_hp)
+        wait = input("Для продолжения нажмите ENTER")
+        print("Для продолжения нажмите ENTER")
+        if rb_hp <= 0:
+            print(" У разбойника кончилось жизни")
+        else:
+            print(f" У {name} жизни")
+            way_1 = False
+            key = ""
 
-    if way_1 and key == "12":
-        os.system("cls")
-        print(f"Текст дорога 1 - Предали разбойники {name} и убили его ночью ")
-        game = False
-        print("Нажмите ENTER для продолжения")
+
+
+
+if way_1 and key == "12":
+    os.system("cls")
+    print(f"Текст дорога 1 - Предали разбойники {name} и убили его ночью ")
+    game = False
+    print("Нажмите ENTER для продолжения")
 
 
     # дорога 2 - княжнаdfasdf
