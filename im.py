@@ -16,7 +16,6 @@ key = ""
 while game:
 
     if (way_1 or way_2 or way_3) and key == "":
-        key = ""
         os.system("cls")
         print(f"Подъезжает {name} к трем дорожкам, на перекрестке камень лежит, а на том камне написано: «Кто вправо поедет - тому убитым быть, кто влево поедет - тому богатым быть, а кто прямо поедет - тому женатым быть")
         if way_1:
@@ -27,7 +26,12 @@ while game:
             print("3 - Ну, поеду теперь в дорожку, где богатому быть")
 
         user_choice = input("Введите номер ответа и нажмите ENTER ")
-        key += user_choice
+        if user_choice == "1" and way_1:
+            key += user_choice
+        if user_choice == "2" and way_2:
+            key += user_choice
+        if user_choice == "3" and way_3:
+            key += user_choice
 
     # дорога 1 - разбойники
     if way_1 and key == "1":
@@ -45,33 +49,34 @@ while game:
         print("Текст дорога 1 - Сразитесь с разбойниками")
         user_hp = 50
         rb_hp = 50
-    while user_hp and rb_hp:
-        user_ud = random.randint(1, 5)
-        rb_ud = random.randint(1, 5)
-        print("Нажмите ENTER для удара")
-        rb_hp -= user_ud
-        print(f"{name} ударил разбойника")
-        print(rb_hp)
-        user_hp -= rb_ud
-        print(f"разбойник убарил {name}")
-        print(user_hp)
-        wait = input("Для продолжения нажмите ENTER")
-        print("Для продолжения нажмите ENTER")
-        if rb_hp <= 0:
-            print(" У разбойника кончилось жизни")
-        else:
-            print(f" У {name} жизни")
-            way_1 = False
-            key = ""
+
+
+        while user_hp > 0 and rb_hp > 0:
+            os.system("cls")
+            user_ud = random.randint(1, 5)
+            rb_ud = random.randint(1, 5)
+            rb_hp -= user_ud
+            print(f"{name} ударил разбойника на {user_ud} и оставил ему {rb_hp}")
+            user_hp -= rb_ud
+            print(f"разбойник убарил {name} на {rb_ud} и оставил ему {user_hp}")
+            wait = input("ENTER для удара")
+            if user_hp > 0:
+                print(" У разбойника кончилось жизни")
+                way_1 = False
+                key = ""
+            else:
+                print(f" У {name} закончились  жизни")
+                game = False
 
 
 
 
-if way_1 and key == "12":
-    os.system("cls")
-    print(f"Текст дорога 1 - Предали разбойники {name} и убили его ночью ")
-    game = False
-    print("Нажмите ENTER для продолжения")
+
+    if way_1 and key == "12":
+        os.system("cls")
+        print(f"Текст дорога 1 - Предали разбойники {name} и убили его ночью ")
+        game = False
+        print("Нажмите ENTER для продолжения")
 
 
     # дорога 2 - княжнаdfasdf
