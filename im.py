@@ -72,11 +72,11 @@ while game:
 
 
 
-    if way_1 and key == "12":
-        os.system("cls")
-        print(f"Текст дорога 1 - Предали разбойники {name} и убили его ночью ")
-        game = False
-        print("Нажмите ENTER для продолжения")
+        if way_1 and key == "12":
+            os.system("cls")
+            print(f"Текст дорога 1 - Предали разбойники {name} и убили его ночью ")
+            game = False
+            print("Нажмите ENTER для продолжения")
 
 
     # дорога 2 - княжнаdfasdf
@@ -92,7 +92,26 @@ while game:
 
     if way_2 and key == "21":
         os.system("cls")
-        print("Текст дорога 2 - Кровать оказалась ловушкой там было много князей и богатырей вы отпустили их , убили королеву и он вернулся к белому камню, стер старую надпись, новую написал Ездил в правую дорожку убит не был")
+        print("Текст дорога 2 - королева сказала что то если мы хотим жить то нужно отгадать число от 1 до 100")
+        print("Угадай число от 1 до 100 ")
+        secret = random.randint(1, 100)
+        attempts = 10
+
+    while attempts:
+        print(f"Осталось {attempts} попыток")
+        user_choice = int(input("Введите число от 1 до 100"))
+        if user_choice == secret:
+            print("Правильно")
+            break
+        elif user_choice > secret:
+            attempts -= 1
+            print ("Многовато")
+        else:
+            print("Маловато")
+            attempts -= 1
+    if attempts == 0:
+        game = False
+    else:
         way_2 = False
         key = ""
         print("Нажмите ENTER для продолжения")
