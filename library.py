@@ -168,8 +168,7 @@ def search_book_by_key(user_key: str) -> None:
 def visit_library() -> None:
     print("Приветствуем вас в библиотеке, что вы хотите сделать")
     print("1-Покозать книгу,2-Добавить книгу,3-Удалить книгу,4-Показать книгу по порядковому номеру,5-Найти книгу по ключу")
-    key_library = 0
-    key_library == input("Введите номер и нажмите ENTER")
+    key_library = input("Введите номер и нажмите ENTER")
     if key_library == 1:
         return show_books()    
     elif key_library == 2:
