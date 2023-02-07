@@ -70,7 +70,7 @@ def add_book() -> None:
 
     library.append(book)
     print("Книга успешно добавлена в библиотеку!")
-    visit_library()
+    return visit_library()
 
 def remove_book() -> None:
     """ удаляет книгу из библиотеки по порядковму номеру ( >0 ) """
@@ -95,7 +95,7 @@ def remove_book() -> None:
 
     print(f"Книга {library[idx]} удалена")
     library.pop(idx)
-    visit_library()
+    return visit_library()
 
     
 def find_book_by_number() -> None:
@@ -126,7 +126,7 @@ def find_book_by_number() -> None:
     print(f"название: {book['название']}")
     print(f"автор: {book['автор']}")
     print(f"год: {book['год']}")
-    visit_library()
+    return visit_library()
 
 
 def search_book_by_key(user_key: str) -> None:
@@ -162,23 +162,27 @@ def search_book_by_key(user_key: str) -> None:
 
 
 
-    visit_library()
+    return visit_library()
 
 
 def visit_library() -> None:
     print("Приветствуем вас в библиотеке, что вы хотите сделать")
-    print("1-Покозать книгу,2-Добавить книгу,3-Удалить книгу,4-Показать книгу по порядковому номеру,5-Найти книгу по ключу")
+    print("1-Покозать книгу,2-Добавить книгу,3-Удалить книгу,4-Показать книгу по порядковому номеру,5-Найти книгу по названию,6-Найти книгу по автору,7-Найти книгу по году")
     key_library = input("Введите номер и нажмите ENTER")
-    if key_library == 1:
+    if key_library == "1":
         return show_books()    
-    elif key_library == 2:
+    elif key_library == "2":
         return add_book()    
-    elif key_library == 3:
+    elif key_library == "3":
         return remove_book()    
-    elif key_library == 4:
+    elif key_library == "4":
         return find_book_by_number()
-    elif key_library == 5:
-        return search_book_by_key(user_key)
+    elif key_library == "5":
+        return search_book_by_key('название')
+    elif key_library == "6":
+        return search_book_by_key('автор')
+    elif key_library == "7":
+        return search_book_by_key('год')
 
 
 
